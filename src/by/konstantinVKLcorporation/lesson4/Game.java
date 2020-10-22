@@ -20,6 +20,8 @@ public class Game {
     public static final char DOT_O = 'O';
     public static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+
+
     public static void main(String[] args) throws IOException {
         initMap();
         printMap();
@@ -84,10 +86,21 @@ public class Game {
         System.out.println("Введите координаты в формате X Y");
         x = Integer.parseInt(reader.readLine()) - 1;
         y = Integer.parseInt(reader.readLine()) - 1;
+
+
+
         helpMass[0] = x;
         helpMass[1] = y;
         while (!isCellValid(x, y)) ;
         map[x][y] = DOT_X;
+    }
+
+    public static boolean checkWin(char symb) throws IOException {
+        if (horizontal(symb) || vertical(symb) || diagonalSecond(symb) || diagonalFirst(symb)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean isCellValid(int x, int y) {
@@ -98,28 +111,6 @@ public class Game {
             return true;
         }
         return false;
-    }
-
-    public static void computer() {
-        int x;
-        int y;
-        do {
-            x = (int) (Math.random() * field);
-            y = (int) (Math.random() * field);
-            helpMass[0] = x;
-            helpMass[1] = y;
-        }
-        while (!isCellValid(x, y));
-        System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
-        map[x][y] = DOT_O;
-    }
-
-    public static boolean checkWin(char symb) throws IOException {
-        if (horizontal(symb) || vertical(symb) || diagonalSecond(symb) || diagonalFirst(symb)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public static boolean diagonalFirst(char symb) {
@@ -240,5 +231,25 @@ public class Game {
             }
         }
         return true;
+    }
+    public static void computer() throws IOException {
+
+        int x;
+        int y;
+        do {
+            x = (int) (Math.random() * field);
+            y = (int) (Math.random() * field);
+            helpMass[0] = x;
+            helpMass[1] = y;
+        }
+        while (!isCellValid(x, y));
+        System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
+        map[x][y] = DOT_O;
+    }
+
+    public static void artificialIntelligence(){
+        diagonalFirst(DOT_X);
+
+
     }
 }
