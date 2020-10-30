@@ -8,6 +8,7 @@ public class Cat extends Animal {
     public Cat() {
         distanceCat = (int) (Math.random() * 201) + 300;
         heightCat = (double) (Math.random() * 5) + 1;
+
     }
 
 
