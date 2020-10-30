@@ -1,16 +1,20 @@
 package by.konstantinVKLcorporation.lesson6;
 
 public class Dog extends Animal {
-    private final int DISTANCE = 500;
-    private final int DURATION = 10;
-    private final double HEIGHT = 0.5;
+    private int distanceDog;
+    private int durationDog;
+    private double heightDog;
 
     public Dog() {
+        distanceDog = (int) (Math.random() * 201) + 300;
+        durationDog = (int) (Math.random() * 201) + 300;
+        heightDog = (double) (Math.random() * 5) + 1;
     }
+
 
     @Override
     public boolean runnig(int distance) {
-        if (distance <= DISTANCE && distance > 0) {
+        if (distance <= distanceDog && distance > 0) {
             System.out.println("Собака пробежит дистанцию");
             return true;
         } else {
@@ -19,9 +23,22 @@ public class Dog extends Animal {
         }
     }
 
+    public int getDistanceDog() {
+        return distanceDog;
+    }
+
+    public int getDurationDog() {
+        return durationDog;
+    }
+
+    public double getHeightDog() {
+        return heightDog;
+    }
+
+
     @Override
     public boolean swim(int duration) {
-        if (duration <= DURATION && duration > 0) {
+        if (duration <= durationDog && duration > 0) {
             System.out.println("Собака проплывет дистанцию");
             return true;
         } else {
@@ -32,7 +49,7 @@ public class Dog extends Animal {
 
     @Override
     public boolean jump(double height) {
-        if (height <= HEIGHT && height > 0) {
+        if (height <= heightDog && height > 0) {
             System.out.println("Собака допрыгнет");
             return true;
         } else {

@@ -28,7 +28,7 @@ public class Oop {
 
         for (int i = 0; i < worker.length; i++) {
             if (worker[i].getAge() > 40) {
-                worker[i].information();
+                worker[i].printInformation();
             }
 
         }

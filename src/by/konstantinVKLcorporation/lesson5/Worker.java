@@ -25,17 +25,17 @@ public class Worker {
         if(age<18||age>65){
             age=0;
             System.out.println("Введите корректные данные");
-            return false;
-        }
-        return true;
+                    }
+
+        return false;
     }
     public int getAge() {
         return age;
     }
 
-    public void information() {
-        System.out.println("Имя пользователя: " + name + "; Должность: " + position + ";" + "; Email: " + email + "; Телефон: "
-                + telephone + "; Зарплата: " + salary + ";" + " Возраст: " + age);
+    public void printInformation() {
+        System.out.printf("Имя пользователя: %s"  + "; Должность: %s" + ";" + "Email: %s" + "; Телефон: %s"
+                 + "; Зарплата: %s" + ";" + " Возраст: %s %n" ,name ,position,email,telephone,salary, age);
     }
 
 }
