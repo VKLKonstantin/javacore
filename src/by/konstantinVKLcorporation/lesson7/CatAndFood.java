@@ -20,7 +20,6 @@ public class CatAndFood {
 
         createCats();
         createPlates();
-        countCat = 0;
         catComToPlate();
 
 
