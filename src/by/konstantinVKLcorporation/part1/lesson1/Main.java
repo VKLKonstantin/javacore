@@ -1,4 +1,4 @@
-package by.konstantinVKLcorporation.lesson1;
+package by.konstantinVKLcorporation.part1.lesson1;
 
 
 import java.io.BufferedReader;
