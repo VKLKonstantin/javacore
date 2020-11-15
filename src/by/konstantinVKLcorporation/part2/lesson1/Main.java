@@ -14,9 +14,9 @@ public class Main {
     public static void testing(Object[] participants, Object[] obstacle) {
 
         for (int i = 0; i < participants.length; i++) {
-            boolean level=true;
+            boolean level = true;
             if (participants[i] instanceof Cat) {
-                for (int j = 0; j < obstacle.length&&level==true;j++ ) {
+                for (int j = 0; j < obstacle.length && level == true; j++) {
 
                     if (obstacle[j] instanceof Treadmill) {
                         if (((Cat) participants[i]).run() < ((Treadmill) obstacle[j]).setDistance()) ;
@@ -24,14 +24,14 @@ public class Main {
                             System.out.println(((Cat) participants[i]).run());
                             System.out.println(((Treadmill) obstacle[j]).setDistance());
                             System.out.println("Кот не справился с дистанцией");
-                            level=false;
+                            level = false;
                             break;
                         }
 
                     }
 
                     if (obstacle[j] instanceof Wall) {
-                        if (((Cat) participants[i]).jump() > ((Wall) obstacle[j]).setHeight());
+                        if (((Cat) participants[i]).jump() > ((Wall) obstacle[j]).setHeight()) ;
                         {
                             System.out.println("Кот перепрыгнул стену");
 
@@ -54,5 +54,5 @@ public class Main {
 
     }
 
-            }
+}
 

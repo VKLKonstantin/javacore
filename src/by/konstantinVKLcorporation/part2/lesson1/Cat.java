@@ -2,9 +2,8 @@ package by.konstantinVKLcorporation.part2.lesson1;
 
 public class Cat implements RunAndJump {
 
-   public int maxRunDistance;
-   public int maxJumpHeight;
-
+    public int maxRunDistance;
+    public int maxJumpHeight;
 
 
     public Cat(int maxRunDistance, int maxJumpHeight) {
@@ -15,7 +14,7 @@ public class Cat implements RunAndJump {
     @Override
     public int run() {
 
-       // System.out.println("Кот бежит");
+        // System.out.println("Кот бежит");
         return maxRunDistance;
     }
 

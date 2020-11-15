@@ -9,6 +9,6 @@ public class Wall {
     }
 
     public int setHeight() {
-      return height;
+        return height;
     }
 }
