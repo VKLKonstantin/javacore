@@ -33,7 +33,7 @@ public class UniqueWord {
         Set<String> words = new HashSet<>(list);//список уникальных слов
         System.out.println(words);
 
-        Iterator<String> uniWord = words.iterator();//проход по Set
+            Iterator<String> uniWord = words.iterator();//проход по Set
         while (uniWord.hasNext()) {
             int count = 0;
             String bufferList = null;//элемент ArrayList
