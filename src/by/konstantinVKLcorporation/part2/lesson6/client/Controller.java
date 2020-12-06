@@ -2,7 +2,6 @@ package by.konstantinVKLcorporation.part2.lesson6.client;
 
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,41 +32,27 @@ public class Controller {
         this.network = network;
     }
 
-    private final ObservableList<String> wordList = FXCollections.observableArrayList("Иванов", "Петров");
 
     @FXML
     public void initialize() {
-        listView.setItems(FXCollections.observableArrayList(wordList));
+        listView.setItems(FXCollections.observableArrayList(by.konstantinVKLcorporation.part2.lesson6.client.Client.USERS_TEST_DATA));//by.konstantinVKLcorporation.part2.lesson6.client.Client.USERS_TEST_DATA
         sendButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               Controller.this.sendMessage();
+                Controller.this.sendMessage();
             }
         });
         inputField.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               Controller.this.sendMessage();
+                Controller.this.sendMessage();
             }
         });
     }
 
-    @FXML
-    public void addWordToList() {
-        String word = inputField.getText();
-        if (word.isBlank()) {
-            System.out.println("Пустота");
-            return;
-        }
-        area.appendText(word);
-        area.appendText(System.lineSeparator());
-        area.isEditable();
-        inputField.clear();
-    }
 
-    private void sendMessage(){ //метод для отправки сообщения на экран
+    private void sendMessage() { //метод для отправки сообщения на экран
         String message = inputField.getText();
-        appendMessage (message);
         inputField.clear();
 
         try {

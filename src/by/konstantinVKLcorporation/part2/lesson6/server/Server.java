@@ -6,28 +6,31 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.SQLOutput;
+
 
 public class Server {
 
     private static final int SERVER_PORT = 8189;
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
+        try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {//ServerSocket создается на стороне сервера.
+            //нужен только на этапе соединения
             System.out.println("Ожидание подключения");
-            Socket clientSocket = serverSocket.accept();//ожидание подключения сокета
+            Socket clientSocket = serverSocket.accept();//ожидание подключения сокета клиента. Когда это происходит
+            // возвращает объект типа Socket (клиента)
             System.out.println("Соединение установлено");
-
+//после создания сокета клиента на стороне сервера, начинается общение
+            //общение осуществляется через потоки ввода/вывода
             DataInputStream in = new DataInputStream(clientSocket.getInputStream());
             DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
 
-            while (true){
+            while (true) {
                 String message = in.readUTF();
                 System.out.println("Сообщение пользователя: " + message);
-            if (message.equals("/exit")){
-                break;
-            }
-out.writeUTF("Ответ от сервера "+ message.toUpperCase());
+                if (message.equals("/exit")) {
+                    break;
+                }
+                out.writeUTF("Ответ от сервера " + message.toUpperCase());
             }
 
             System.out.println("Сервер остановлен");

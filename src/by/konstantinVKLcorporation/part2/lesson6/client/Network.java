@@ -12,35 +12,35 @@ public class Network {
 
     private final int port;
     private final String host;
+
     private DataInputStream in;
     private DataOutputStream out;
     private Socket socket;
-
-
 
     public Network() {
         this(SERVER_HOST, SERVER_PORT);
     }
 
     public Network(String serverHost, int serverPort) {
-        this.host=serverHost;
-        this.port=serverPort;
+        this.host = serverHost;
+        this.port = serverPort;
     }
 
-public boolean connect (){
+    public boolean connect() {
+        try {
+            socket = new Socket(host, port);
+            in = new DataInputStream(socket.getInputStream());
+            out = new DataOutputStream(socket.getOutputStream());
+            return true;
+        } catch (IOException e) {
+            System.out.println("Соединение не было установлено");
+            e.printStackTrace();
+            return false;
+        }
 
-    try {
-        socket = new Socket("localhost",8189);
-        in = new DataInputStream(socket.getInputStream());
-        out = new DataOutputStream(socket.getOutputStream());
-        return true;
-    } catch (IOException e) {
-        System.out.println("Соединение не было установлено");
-        e.printStackTrace();
-        return false;
+
     }
 
-}
     public void close() {
         try {
             socket.close();
@@ -49,6 +49,7 @@ public boolean connect (){
 
         }
     }
+
     public DataInputStream getIn() {
         return in;
     }
@@ -56,6 +57,7 @@ public boolean connect (){
     public DataOutputStream getOut() {
         return out;
     }
+
     public void waitMessage(Controller viewController) {
         Thread thread = new Thread(() -> {
             try {
@@ -64,13 +66,12 @@ public boolean connect (){
                     viewController.appendMessage("Я: " + message);
                 }
 
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
-               Client.showErrorMessage("Ошибка подключения", "", e.getMessage());
+                Client.showErrorMessage("Ошибка подключения", "", e.getMessage());
             }
         });
-        thread.setDaemon(true);
+        //  thread.setDaemon(true);//при закрытии приложения поток автоматически закрываетсяч
         thread.start();
     }
 }
