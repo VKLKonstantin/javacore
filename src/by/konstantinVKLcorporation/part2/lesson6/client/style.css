@@ -1,0 +1,10 @@
+#inputField {
+-fx-background-color: #B5D1ED;
+}
+.send-button {
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-font-weight: 900;
+    -fx-font-size: 21;
+}
+
